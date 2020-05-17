@@ -28,11 +28,21 @@ def tokenize(text):
     return clean_tokens
 
 # load data
+
+"""
+Loading the SQL database
+Loading the celanded data
+
+"""
 engine = create_engine('sqlite:///data/DisasterResponse.db')
 df = pd.read_sql_table('messages', engine)
 
 
 # load model
+"""
+Loading pickel file saved in the ML Pipeline
+
+"""
 model = joblib.load("models/classifier.pkl")
 
 
@@ -43,6 +53,10 @@ model = joblib.load("models/classifier.pkl")
 def index():
     
     # extract data needed for visuals
+    """
+    Loading data required for the visualisations
+
+    """
     categories = df.iloc[:,4:]
     
     #Top 10 categories
